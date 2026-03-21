@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  drizzle-gate:
+    image: ghcr.io/drizzle-team/gateway:latest
+    container_name: drizzle-gate
+    restart: always
+    ports:
+      - "4983:4983"
+    environment:
+      - PORT=4983
+      - STORE_PATH=/app
+      - MASTERPASS=your_master_password
+    volumes:
+      - drizzle-data:/app
+
+volumes:
+  drizzle-data:
